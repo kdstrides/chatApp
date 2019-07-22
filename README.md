@@ -3,7 +3,7 @@
 ### Getting started
 
 ```bash
-$ git clone
+$ git clone https://github.com/kdstrides/chatApp.git
 $ npm i
 $ nodemon/node index.js
 ```
