@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="kdChatApp">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>KDStrides Chat APP</title>
+    <meta name="generator" content="Bootply">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body cz-shortcut-listen="true" ng-controller='AppCtrl'>
+    <i class="fa fa-spin fa-refresh fa-5x" id="loading-spinner" style="display: none;"></i>
+    <div class="container ng-scope">
+        <h3 class="text-center">KDStrides Chat app</h3>
+        <hr>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row  max-height-400" id="users" style="display: block;" scroll-to-bottom="users">
+                    <div ng-repeat="user in users" class="col-sm-12 ng-scope">
+                        <div class="row" ng-if="user">
+                            <div class="col-xs-2" ng-class="{'col-xs-push-10' : (user.username == curtrentUser)}">&nbsp;</div>
+                            <div class="col-xs-10" ng-class="{'col-xs-pull-2' : (user.username == curtrentUser)}">
+                                <div class="panel panel-default ">
+                                    <div class="panel-body ng-binding "> <strong>{{user.username}}</strong> :
+                                        {{user.message}} <br>
+                                        <span class="label label-info ng-binding ">{{user.date | date: 'h:mma'}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="text-left">Type your message.</h4>
+                <div class="input-group ">
+                    <input id="messageInput" type="text " ng-model="message " class="form-control" placeholder="Your message..." />
+                    <span class="input-group-btn ">
+                        <button class="btn btn-primary" type="button" ng-click="SendMessage(message)">Send Message</button>
+                    </span>
+                </div>
+                <div class="clearfix "></div>
+            </div>
+            <div class="col-lg-4 ">
+                <h4>Create Room</h4>
+                <div class="form-group ">
+                    <label for="exampleInputEmail1 ">Your Name</label>
+                    <input type="text " ng-model="create.username " class="form-control " id="create_room_email "
+                        placeholder="Enter Name " />
+                </div>
+                <button type="submit " id="create " ng-click="createRoom(create) "
+                    class="btn btn-default ">Submit</button>
+                <div class="clearfix "></div>
+                <hr>
+                <h4>Join Room</h4>
+                <div class="form-group ">
+                    <label for="exampleInputEmail1 ">Your Name</label>
+                    <input type="text " ng-model="join.username " class="form-control " id="join_room_email "
+                        placeholder="Enter Name " />
+                </div>
+                <div class="form-group ">
+                    <label for="exampleInputEmail1 ">Room Code</label>
+                    <input type="text " ng-model="join.room " class="form-control " id="join_room_code "
+                        placeholder="Enter Room Code " />
+                </div>
+                <button type="submit " id="join " ng-click="joinRoom(join) " class="btn btn-default ">Submit</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="/socket.io/socket.io.js "></script>
+    <script type="text/javascript " src="./js/angular.min.js "></script>
+    <script type="text/javascript " src="./js/app.js "></script>
+</body>
+</html>

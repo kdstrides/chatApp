@@ -1,0 +1,20 @@
+body {
+  color: #888;
+}
+
+#users {
+  display: none;
+}
+
+#loading-spinner {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  top: 40%;
+}
+
+.max-height-400 {
+  max-height: 70vh;
+  overflow: scroll;
+}
